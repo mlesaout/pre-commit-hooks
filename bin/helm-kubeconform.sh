@@ -8,4 +8,26 @@ if which helm &> /dev/null $? != 0 ; then
     exit 1
 fi
 
-helm kubeconform --summary .
+parse_cmdline_() {
+
+  ARGS+=$(getopt -o a: --long args: -- "$@")
+#    || return
+#   eval "set -- $argv"
+
+#   for argv; do
+#     case $argv in
+#       -a | --args)
+#         shift
+#         ARGS+=("$1")
+#         shift
+#         ;;
+#       --)
+#         shift
+#         FILES=("$@")
+#         break
+#         ;;
+#     esac
+#   done
+}
+
+helm kubeconform "${ARGS[@]}" .
