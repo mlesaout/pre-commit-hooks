@@ -56,6 +56,14 @@
   exclude: \.+.terraform\/.*$
   require_serial: true
 
+- id: helm-kubeconform
+  name: kubeconform
+  description: Run helm kubeconform, an alternative to kubeval
+  entry: bin/helm-kubeconform.sh
+  language: script
+  pass_filenames: false
+  always_run: true
+
 - id: helm-lint
   name: helmlint
   description: Run helm lint, a linter for helm charts
